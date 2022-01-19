@@ -1,7 +1,4 @@
 import axios from 'axios';
-export const CELSIUS = '℃';
-export const URL_IMG = 'http://openweathermap.org/img/wn/[image_id]@2x.png';
-
 
 export const getSearchParam = (params) => {
   const { 

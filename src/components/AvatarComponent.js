@@ -1,10 +1,9 @@
-import { Avatar } from 'antd'
-import { URL_IMG } from '../helpers';
+import { Avatar } from 'antd';
+import { URL_IMG } from '../constants/Constants';
 
 export const AvatarComponent = (prop) => {
   if (!prop) {
-    console.log('no prop');
-    return
+    return;
   }
   
   const { item } = prop;

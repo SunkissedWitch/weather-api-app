@@ -1,25 +1,12 @@
 import './App.css';
 import axios from 'axios';
-import { 
-  Input,
-  Space,
-  List
-} from 'antd';
-
+import { Space } from 'antd';
 import { useState, useEffect } from 'react';
-import { getSearchParam, fetchData, degrees, CELSIUS } from './helpers';
-import { CurrentWeather } from './components/Current-weather';
-import { AvatarComponent } from './components/AvatarComponent';
-// import ListWeather from './components/list';
-// import SearchInput from './components/search';
-
-const { Search } = Input;
-
-const KEY_API = 'appid=b72669f6c155eab64f7b33e11f954718';
-const WEATHER_URL = 'http://api.openweathermap.org/data/2.5/weather?[query_param_1]&q=[query_param_2]&units=[query_param_3]';
-
-const METRIC = 'metric';
-const IMPERIAL = 'imperial';
+import { getSearchParam, fetchData } from './helpers/helpers';
+import { CurrentWeather } from './components/CurrentWeather';
+import { WeatherList } from './components/WeatherList';
+import { SearchInput } from './components/Search';
+import { WEATHER_URL, KEY_API, METRIC } from './constants/Constants';
 
 function App() {
   const searchParams = {
@@ -37,7 +24,6 @@ function App() {
       ...searchParams,
       value: value
     }), setSearchResult);
-    console.log('searchResult', searchResult);
     return getSearchParam({
       ...searchParams,
       value: value
@@ -70,7 +56,7 @@ function App() {
 
     allFavList.forEach(([city, state]) => {
       if(!state) {
-        // console.log(`Cake with name ${city} is a lie`);
+        console.log(`Cake ${city} is a lie`);
         return;
       }
       arrayCities.push( new Promise (
@@ -79,7 +65,7 @@ function App() {
             ...searchParams,
             value: city,
           })).then((result) => {
-              resolve(result.data);
+              return resolve(result.data);
           })
         })
       )
@@ -94,39 +80,15 @@ function App() {
   return (
    <>
     <Space direction="vertical">
-      <Search
-        placeholder="input search text"
-        allowClear
-        enterButton="Search"
-        size="large"
-        onSearch={onSearch}
-      />
+      <SearchInput onSearch={onSearch} />
+
       { !!Object.keys(searchResult).length && 
         <CurrentWeather data={searchResult} favorites={favorites} setFavorite={setFavorite} />
       }
-     
+
     </Space>
 
-    <List
-      itemLayout="horizontal"
-      dataSource={favData}
-      renderItem={item => (
-        <List.Item 
-        
-        key={item.id}>
-          <List.Item.Meta
-            avatar={<AvatarComponent item={item} />}
-            title={item.name}
-            description={
-            <>
-              <p>Now {degrees(item.main.temp, CELSIUS)}</p>
-              <p>Feels like {degrees(item.main.feels_like, CELSIUS)}</p>
-            </>
-            }
-          />
-        </List.Item>
-      )}
-    />
+    <WeatherList favData={favData}/>
    </>
   );
 }
