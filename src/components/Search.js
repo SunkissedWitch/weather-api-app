@@ -1,4 +1,4 @@
-import { Input } from 'antd';
+import { Card, Input } from 'antd';
 
 const { Search } = Input;
 
@@ -6,12 +6,19 @@ export const SearchInput = (props) => {
   const { onSearch } = props;
 
   return (
-   <Search
-        placeholder="input search text"
+    <Card
+    className='fixed-top'>
+      <Search
+        style={{
+          border: '1px solid #cacaca',
+          borderRadius: 20
+        }}
+        bordered={false}
+        placeholder="Search"
         allowClear
-        enterButton="Search"
         size="large"
         onSearch={onSearch}
-      />
+      />      
+    </Card>
   )
 }

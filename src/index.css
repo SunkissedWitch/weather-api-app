@@ -11,3 +11,91 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.gradient-background{
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  left: 0px;
+  top: 0px;
+  
+  background: linear-gradient(180deg, #30A2C5 0%, rgba(255, 255, 255, 0) 100%), #00242F;
+}
+
+.flex-box{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+
+.central-card-style{
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  margin: auto;
+}
+.white-circle{
+  width: 240px;
+  height: 240px;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 28px 36px rgba(96, 209, 234, 0.4);
+}
+
+.card-style {
+  border-radius: 20px;
+  border: 1px solid #cacaca;
+  text-align: center;
+  box-shadow: 0px 2px 7px rgba(81, 81, 82, 0.2);
+}
+
+.fixed-top {
+  width: 100%;
+  border: none;
+  border-radius: 0 0 50px 50px;
+  min-height: 100px;
+  margin-bottom: 2vh;
+  box-shadow: 0px 12px 22px rgba(96, 209, 234, 0.4);
+}
+
+.description-current-weather {
+  margin-top: 5vh;
+}
+
+/* customize ant-search */
+.fixed-top .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+  border: none;
+  background-color: transparent; 
+}
+.fixed-top .ant-input-group-addon, .ant-input-group-wrap {
+  border: none;
+  background-color: transparent; 
+}
+/* ===================== */
+
+
+/* customize ant-pagination */
+.custom-pagination-buttons .ant-pagination-item-active{
+background-color: #30A2C5;
+border: none;
+border-radius: 50%;
+}
+
+.custom-pagination-buttons .ant-pagination-item a{
+  color: #30A2C5;
+}
+
+.custom-pagination-buttons .ant-pagination-item-active a{
+  color: #fff;
+}
+
+.custom-pagination-buttons .ant-pagination-prev button, .ant-pagination-next button{
+  color: #30A2C5;
+}
+/* ===================== */

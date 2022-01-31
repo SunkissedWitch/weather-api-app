@@ -6,12 +6,18 @@ export const AvatarComponent = (prop) => {
     return;
   }
   
-  const { item } = prop;
-  return <Avatar 
-          style={{ backgroundColor: '#bae7ff' }} 
-          size={100} 
-          src={
-            URL_IMG.replace('[image_id]', item.weather.map((item) => {return item.icon}))
-          }
+  const { item, size } = prop;
+
+  console.log("prop avatar", item)
+
+  return item.map(
+    item => {
+      return (
+        <Avatar key={item.icon}
+            size={size} 
+            alt={item.description}
+            src={URL_IMG.replace('[image_id]', item.icon)}
         />
+      )
+    })
 }

@@ -1,6 +1,5 @@
 import './App.css';
 import axios from 'axios';
-import { Space } from 'antd';
 import { useState, useEffect } from 'react';
 import { getSearchParam, fetchData } from './helpers/helpers';
 import { CurrentWeather } from './components/CurrentWeather';
@@ -79,16 +78,21 @@ function App() {
 
   return (
    <>
-    <Space direction="vertical">
-      <SearchInput onSearch={onSearch} />
+    <div className='flex-box'>
+      <div>
+        <SearchInput className="search-component" onSearch={onSearch} />  
+      </div>
 
-      { !!Object.keys(searchResult).length && 
-        <CurrentWeather data={searchResult} favorites={favorites} setFavorite={setFavorite} />
-      }
+      <div>
+        { !!Object.keys(searchResult).length && 
+          <CurrentWeather data={searchResult} favorites={favorites} setFavorite={setFavorite} />
+        }
+      </div>  
 
-    </Space>
-
-    <WeatherList favData={favData}/>
+      <div>
+        <WeatherList favData={favData}/> 
+      </div>
+    </div>
    </>
   );
 }

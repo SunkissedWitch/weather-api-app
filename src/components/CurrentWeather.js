@@ -1,8 +1,10 @@
 import { degrees } from '../helpers/helpers';
-import { CELSIUS, URL_IMG } from '../constants/Constants';
-import { Card, Button, Avatar } from 'antd';
-import { StarOutlined } from '@ant-design/icons';
+import { CELSIUS } from '../constants/Constants';
+import { Card, Button, Divider, Typography } from 'antd';
+import { StarOutlined, StarFilled } from '@ant-design/icons';
+import { AvatarComponent } from './AvatarComponent';
 
+const { Title } = Typography;
 
 export const CurrentWeather = (props) => {
   if (!props) {
@@ -13,34 +15,53 @@ export const CurrentWeather = (props) => {
   
   const { weather, main: temperature, name } = data;
   const { temp, feels_like, temp_max, temp_min } = temperature;
-  let buttonTitle = favorites[name] ? "Remove from favorite" : "Add to favorite";
-  
-  return weather.map((item) => {
-    return (
-      <Card 
-      key={item.id} 
-      style={{ width: 400 }}
-      title={name} 
-      extra={
+  const iconFav = favorites[name]
+                      ? <StarFilled style={{color: '#fff'}} /> 
+                      : <StarOutlined style={{color: '#fff'}} />
+
+  const descriptionWeather = (array) => ( 
+    array.map((item, index, array) => {
+      const comma = index < array.length-1 ? ", " : "";
+      return <span key={item.id}>{item.main}{comma}</span>
+    }
+  ))
+
+  return (
+    <Card 
+    className="central-card-style"
+    headStyle={{border: 'none'}}
+    bordered={false}
+    title={<Title 
+      level={2} 
+      style={{color: "#fff"}}
+      >
+        {name}
+      </Title>}
+
+    extra={
       <Button 
         onClick={() => setFavorite(name)} 
-        type="primary" 
-        shape="round" 
-        icon={<StarOutlined />}>
-        {buttonTitle}  
-      </Button>}
-      >
+        type="link"
+        icon={iconFav}
+      />}
+    >
 
-      <Avatar 
-        src={URL_IMG.replace('[image_id]', item.icon)} 
-        alt={item.description}
-        size={80} 
-      />
-        <h3>{item.main}</h3>
-        <p>Now {degrees(temp, CELSIUS)}</p>
-        <p>Feels like {degrees(feels_like, CELSIUS)}</p>
-        <p>Max temperature {degrees(temp_max, CELSIUS)}</p>
-        <p>Min temperature {degrees(temp_min, CELSIUS)}</p>
-      </Card>)
-  });
+      <div className='white-circle'>
+        <AvatarComponent item={weather} size={80} />
+        
+        <Title level={5} style={{color: "black"}}>
+          {descriptionWeather(weather)}
+          </Title>
+        <Title level={4}>Now {degrees(temp, CELSIUS)}</Title>
+      </div>
+      
+      <div className='description-current-weather'>
+        <span>Feels {degrees(feels_like, CELSIUS)}</span>
+        <Divider type='vertical' style={{backgroundColor: '#cacaca'}}/>
+        <span>Max {degrees(temp_max, CELSIUS)}</span>
+        <Divider type='vertical' style={{backgroundColor: '#cacaca'}}/>
+        <span>Min {degrees(temp_min, CELSIUS)}</span>       
+      </div>
+
+    </Card>)
 };
