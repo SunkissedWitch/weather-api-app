@@ -8,8 +8,6 @@ export const AvatarComponent = (prop) => {
   
   const { item, size } = prop;
 
-  console.log("prop avatar", item)
-
   return item.map(
     item => {
       return (

@@ -18,11 +18,14 @@ function App() {
   const [ favorites, setFavorites ] = useState({});
   const [ favData, setFavData ] = useState([]);
 
-  const onSearch = value => {
-    fetchData(getSearchParam({
-      ...searchParams,
-      value: value
-    }), setSearchResult);
+  const onSearch = async (value) => {
+    setSearchResult(
+      await fetchData(
+        getSearchParam({
+          ...searchParams,
+          value: value
+        })
+    ));
     return getSearchParam({
       ...searchParams,
       value: value

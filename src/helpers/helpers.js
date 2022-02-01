@@ -14,9 +14,9 @@ export const getSearchParam = (params) => {
   return searchUrl;
 }
 
-export const fetchData = async (url, setState) => { 
+export const fetchData = async (url) => { 
   const { data } = await axios.get(url);
-  setState(data);
+  return data;
 };
 
 export const degrees = (t, units) => {
