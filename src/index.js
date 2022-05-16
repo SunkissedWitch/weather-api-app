@@ -5,11 +5,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { LayoutComponent } from './components/Layout';
+import { BrowserRouter } from "react-router-dom";
 
 
 ReactDOM.render(
   <React.StrictMode>
-      <LayoutComponent App={App}/>,
+    <BrowserRouter>
+      <LayoutComponent App={App}/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

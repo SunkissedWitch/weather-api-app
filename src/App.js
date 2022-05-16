@@ -6,6 +6,9 @@ import { CurrentWeather } from './components/CurrentWeather';
 import { WeatherList } from './components/WeatherList';
 import { SearchInput } from './components/Search';
 import { WEATHER_URL, KEY_API, METRIC } from './constants/Constants';
+import SignInButton from './components/SignInButton'
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
 
 function App() {
   const searchParams = {
@@ -17,6 +20,30 @@ function App() {
   const [ searchResult, setSearchResult ] = useState({});
   const [ favorites, setFavorites ] = useState({});
   const [ favData, setFavData ] = useState([]);
+  const navigate = useNavigate();
+
+
+  // localStorage.getItem('MyTemporaryToken')
+
+  // const [ city, setCity ] = useState({});
+
+  // const fetchCities = async (id) => {
+    
+  //   const allCities = await axios.get(`http://localhost:4141/api/cities`, {
+  //     params: {
+  //       id: id
+  //     }
+  //   });
+  //   console.log('allCities', allCities)
+  //   if (!allCities.data){
+  //     return 'no data';
+  //   }
+  //   setCity(allCities.data);
+  // }
+  // useEffect (() => {
+  //   fetchCities(1)
+  // }, [])
+  // console.log('city', city)
 
   const onSearch = async (value) => {
     setSearchResult(
@@ -83,8 +110,19 @@ function App() {
    <>
     <div className='flex-box'>
       <div>
-        <SearchInput className="search-component" onSearch={onSearch} />  
+        <SearchInput className="search-component" onSearch={onSearch} /> 
       </div>
+
+      <SignInButton />
+      <Button 
+        ghost
+        shape='round'
+        size='large'
+        style={{marginLeft: '20px', marginRight: '20px'}}
+        onClick={() => navigate('/protected')}
+      >
+        protected route
+      </Button>
 
       <div>
         { !!Object.keys(searchResult).length && 
