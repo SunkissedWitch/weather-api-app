@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
+import React from 'react'
 import jwt from 'jsonwebtoken';
-
-// import 'dotenv/config';
+import 'dotenv/config';
 
 const IsAuthorized = ({ children }) => {
   // const secretKey = process.env.MY_SECRET_KEY

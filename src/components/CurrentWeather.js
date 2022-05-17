@@ -1,3 +1,4 @@
+import React from 'react'
 import { degrees } from '../helpers/helpers';
 import { CELSIUS } from '../constants/Constants';
 import { Card, Button, Divider, Typography } from 'antd';

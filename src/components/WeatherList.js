@@ -2,6 +2,8 @@ import { degrees } from '../helpers/helpers';
 import { CELSIUS } from '../constants/Constants';
 import { AvatarComponent } from './AvatarComponent';
 import { Card, List, Typography } from 'antd';
+import React from 'react'
+
 
 const { Title } = Typography;
 

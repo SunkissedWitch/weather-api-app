@@ -1,4 +1,4 @@
-import react from "react";
+import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { Layout, Form, Input, Button } from 'antd';
 import axios from "axios";

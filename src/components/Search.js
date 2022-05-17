@@ -1,3 +1,4 @@
+import React from 'react'
 import { Card, Input } from 'antd';
 
 const { Search } = Input;

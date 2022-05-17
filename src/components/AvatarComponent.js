@@ -1,3 +1,4 @@
+import React from 'react'
 import { Avatar } from 'antd';
 import { URL_IMG } from '../constants/Constants';
 
