@@ -1,14 +1,14 @@
 import { Navigate } from "react-router-dom";
-import React from 'react'
 import jwt from 'jsonwebtoken';
-import 'dotenv/config';
 
 const IsAuthorized = ({ children }) => {
-  // const secretKey = process.env.MY_SECRET_KEY
-  // console.log('secretKey', secretKey)
+  const secretKey = process.env.REACT_APP_MY_SECRET_KEY
+  console.log('secretKey', secretKey)
+  
   const token = localStorage.getItem('MyTemporaryToken');
   // try { 
-  //   jwt.verify(token, )
+  //   const user = jwt.verify(token, secretKey)
+  //   console.log('user', user)
   // }
   // catch (error) {
   //   console.log (error)

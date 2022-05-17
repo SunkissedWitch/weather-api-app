@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { LayoutComponent } from './components/Layout';
 import { BrowserRouter } from "react-router-dom";
+import 'dotenv/config';
+// require('dotenv').config();
 
 
 ReactDOM.render(
