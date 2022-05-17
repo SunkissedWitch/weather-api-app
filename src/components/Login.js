@@ -13,9 +13,7 @@ const Login = () => {
         password: values.password
       })
       localStorage.setItem('MyTemporaryToken', send.data.bearer);
-      // console.log('localStorage', localStorage.getItem('MyTemporaryToken'))
       navigate('/');
-      // положить в локалсторедж, и сделать защищенный роут, где он будет проверяться
     }
     catch (error) {
       console.log(error)
@@ -23,7 +21,6 @@ const Login = () => {
   }
 
   const onFinish = (values) => {
-    console.log('Success:', values);
     signIn(values);
   };
 
